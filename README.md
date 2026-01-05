@@ -1,5 +1,4 @@
-
-![MENU](images/demo.png)
+![MENU](images/menu.png)
 
 # QuickBill – Simple Invoice System
 
