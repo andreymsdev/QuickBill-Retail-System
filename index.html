@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>QuickBill A Simple Invoice System</title>
+</head>
+
+<body>
+    <!-- Background Video -->
+    <div class="video-container">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="images/space.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-overlay">
+        <div class="container">
+
+            <!-- Header -->
+            <header>
+                <h1><i class="fas fa-bolt"></i> QuickBill</h1>
+                <p>Your Simple Retail System</p>
+            </header>
+
+            <!-- Main -->
+            <main>
+
+                <!-- Item Input Section -->
+                <section class="input-card">
+                    <h3><i class="item"></i> Add New Item</h3>
+                    <div class="input-group">
+                        <input type="text" id="itemName" placeholder="Item Name">
+                        <input type="number" id="itemQty" placeholder="Qty" min="1">
+                        <input type="number" id="itemPrice" placeholder="Price ($)" step="0.01">
+                        <button onclick="addItem()" class="btn-add">Add to List</button>
+                    </div>
+                </section>
+
+                <!-- Invoice Display Section -->
+                <section class="invoice-paper" id="invoiceArea">
+
+                    <!-- Invoice Header -->
+                    <div class="invoice-brand">
+                        <h2>RETAIL INVOICE</h2>
+                        <p id="dateDisplay"></p>
+                        <p>Invoice ID: <span id="invId">#0000</span></p>
+                    </div>
+
+                    <!-- Invoice Items Table -->
+                    <table id="invoiceTable">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Qty</th>
+                                <th>Unit Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemsBody">
+                        </tbody>
+                    </table>
+
+                    <!-- Invoice Summary -->
+                    <div class="summary">
+                        <p>Subtotal: <span id="subtotalDisplay">$0.00</span></p>
+                        <p>Tax (10%): <span id="taxDisplay">$0.00</span></p>
+                        <p class="grand-total">
+                            Grand Total: <span id="totalDisplay">$0.00</span>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button onclick="window.print()" class="btn-print">
+                        <i class="fas fa-print"></i> Print PDF
+                    </button>
+                    <button onclick="clearInvoice()" class="btn-clear">
+                        Reset
+                    </button>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+    <footer class="footer-social">
+
+        <div class="social-wrapper">
+            <a href="https://github.com/andreymsdev" target="_blank" class="social-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="social-icon">
+            </a>
+
+            <div class="social-divider"></div>
+
+            <a href="https://www.linkedin.com/in/andrey-ms" target="_blank" class="social-link">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn" class="social-icon">            
+            </a>
+        </div>
+    </footer>
+    
+</body>
+</html>

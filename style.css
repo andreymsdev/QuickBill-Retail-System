@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Theme variables */
+:root {
+    --lg-bg-color: rgba(255, 255, 255, 0.12); /* Glass background */
+    --lg-highlight: rgba(255, 255, 255, 0.4); /* Border highlight */
+    --lg-text: #ffffff;
+    --accent-blue: #00d9ffcc;
+}
+
+/* Base body styling */
+body {
+    font-family: "Poppins", sans-serif;
+    color: var(--lg-text);
+    overflow-x: hidden;
+}
+
+/* Background video */
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+/* Main overlay container */
+.content-overlay {
+    background: rgba(0, 0, 0, 0.1); 
+    min-height: 100vh; /* Full viewport height */
+    width: 100vw;      /* Full viewport width */
+    padding: 40px 20px;
+
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+}
+
+/* Main content wrapper */
+.container {
+    width: 100%;
+    max-width: 850px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 3rem;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+}
+
+/* Glass effect cards */
+.input-card, .invoice-paper {
+    position: relative;
+    background: var(--lg-bg-color);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    border: 1px solid var(--lg-highlight);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Form and inputs */
+.input-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    flex: 1;
+    min-width: 120px;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Add button */
+.btn-add {
+    background: var(--accent-blue);
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-add:hover {
+    transform: scale(1.05);
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th {
+    text-align: left;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    color: var(--accent-blue);
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Summary and totals */
+.summary {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.grand-total {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-blue);
+    margin-top: 10px;
+}
+
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-print, .btn-clear {
+    padding: 12px 30px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-print {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-print:hover {
+    background: white;
+    color: black;
+}
+
+/* Print mode */
+@media print {
+    #bg-video, .video-container, .input-card, .action-buttons {
+        display: none !important;
+    }
+    body, .content-overlay {
+        background: white !important;
+        color: black !important;
+    }
+    .invoice-paper {
+        background: white !important;
+        color: black !important;
+        backdrop-filter: none;
+        box-shadow: none;
+        border: none;
+        width: 100%;
+    }
+    .grand-total, th {
+        color: black !important;
+    }
+}
+
+/* Footer social links */
+.footer-social {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.social-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon {
+    width: 25px;
+    height: 25px;
+    filter: invert(1);
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px) scale(1.1);
+}
+
+.social-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Hide footer when printing */
+@media print {
+    .footer-social {
+        display: none !important;
+    }
+}
